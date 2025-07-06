@@ -5,6 +5,7 @@ A modern, high-performance marketing website and admin dashboard for a farm prod
 ## 🌱 Features
 
 ### Marketing Website
+
 - **Beautiful Homepage** with hero section and dynamic product showcase
 - **Product Catalog** with advanced filtering and search functionality
 - **Smooth Animations** using Framer Motion for engaging user experience
@@ -15,6 +16,7 @@ A modern, high-performance marketing website and admin dashboard for a farm prod
 - **Responsive Design** optimized for all devices
 
 ### Admin Dashboard
+
 - **Secure Authentication** with role-based access control
 - **Product Management** with full CRUD operations
 - **Inventory Tracking** with low stock alerts
@@ -36,17 +38,20 @@ A modern, high-performance marketing website and admin dashboard for a farm prod
 ## 🛠️ Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/0xMuhareeb/Farm-marketing.git
 cd Farm-marketing
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -104,6 +109,7 @@ src/
 ## 🌟 Key Features
 
 ### For Customers
+
 - Browse fresh organic products
 - View detailed product information
 - Contact the farm directly
@@ -111,6 +117,7 @@ src/
 - Mobile-friendly shopping experience
 
 ### For Farm Owners
+
 - Manage product inventory
 - Track sales analytics
 - Update product information
@@ -128,7 +135,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## 📞 Contact
 
 For questions or support, please contact us through the website's contact form or reach out directly.
-
+adamumuhammad952@gmail.com
 ---
 
 Built with ❤️ for sustainable farming and fresh produce delivery.

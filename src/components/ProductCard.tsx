@@ -15,9 +15,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -5 }}
       transition={{ duration: 0.3 }}
-      className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+      className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full"
     >
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden flex-shrink-0">
         <img
           src={product.image}
           alt={product.name}
@@ -51,30 +51,30 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
         </div>
       </div>
       
-      <div className="p-6">
+      <div className="p-6 flex flex-col h-full">
         <div className="flex items-center justify-between mb-2">
-          <h3 className="text-lg font-semibold text-gray-900">{product.name}</h3>
-          <div className="flex items-center">
+          <h3 className="text-lg font-semibold text-gray-900 line-clamp-1">{product.name}</h3>
+          <div className="flex items-center flex-shrink-0 ml-2">
             <Star className="h-4 w-4 text-yellow-400 fill-current" />
             <span className="text-sm text-gray-600 ml-1">4.8</span>
           </div>
         </div>
+
+        <p className="text-gray-600 text-sm mb-4 line-clamp-2 flex-grow">{product.description}</p>
         
-        <p className="text-gray-600 text-sm mb-4 line-clamp-2">{product.description}</p>
-        
-        <div className="flex items-center justify-between">
-          <span className="text-2xl font-bold text-green-600">${product.price}</span>
+        <div className="flex items-center justify-between mt-auto">
+          <span className="text-2xl font-bold text-green-600 flex-shrink-0">₦{product.price.toLocaleString()}</span>
           <button
             onClick={() => onAddToCart?.(product)}
             disabled={product.inStock === 0}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold transition-all duration-300 ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold transition-all duration-300 whitespace-nowrap ml-2 ${
               product.inStock > 0
                 ? 'bg-green-600 hover:bg-green-700 text-white transform hover:scale-105'
                 : 'bg-gray-300 text-gray-500 cursor-not-allowed'
             }`}
           >
-            <ShoppingCart className="h-4 w-4" />
-            Add to Cart
+            <ShoppingCart className="h-4 w-4 flex-shrink-0" />
+            <span>Add to Cart</span>
           </button>
         </div>
       </div>

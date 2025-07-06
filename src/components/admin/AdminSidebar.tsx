@@ -51,11 +51,79 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen, onClose }) => {
       </AnimatePresence>
 
       {/* Sidebar */}
+      <div className="hidden lg:block lg:w-64 lg:bg-white lg:shadow-xl">
+        <div className="flex flex-col h-full">
+          {/* Header */}
+          <div className="flex items-center justify-between p-6 border-b">
+            <div className="flex items-center space-x-3">
+              <div className="bg-green-600 p-2 rounded-lg">
+                <Leaf className="h-6 w-6 text-white" />
+              </div>
+              <div>
+                <h1 className="text-lg font-bold text-gray-900">GreenHarvest</h1>
+                <p className="text-sm text-gray-600">Admin Panel</p>
+              </div>
+            </div>
+          </div>
+
+          {/* User Info */}
+          <div className="p-6 border-b">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                <span className="text-green-600 font-semibold">
+                  {user?.name?.charAt(0)}
+                </span>
+              </div>
+              <div>
+                <p className="font-medium text-gray-900">{user?.name}</p>
+                <p className="text-sm text-gray-600 capitalize">{user?.role}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Navigation */}
+          <nav className="flex-1 p-4">
+            <ul className="space-y-2">
+              {menuItems.map((item) => {
+                const isActive = location.pathname === item.path;
+                return (
+                  <li key={item.path}>
+                    <Link
+                      to={item.path}
+                      className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
+                        isActive
+                          ? 'bg-green-50 text-green-600 border-r-2 border-green-600'
+                          : 'text-gray-700 hover:bg-gray-50'
+                      }`}
+                    >
+                      <item.icon className="h-5 w-5" />
+                      <span className="font-medium">{item.label}</span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+
+          {/* Logout */}
+          <div className="p-4 border-t">
+            <button
+              onClick={handleLogout}
+              className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors w-full"
+            >
+              <LogOut className="h-5 w-5" />
+              <span className="font-medium">Logout</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Sidebar */}
       <motion.div
         initial={{ x: -300 }}
         animate={{ x: isOpen ? 0 : -300 }}
         transition={{ type: 'spring', damping: 20, stiffness: 100 }}
-        className="fixed left-0 top-0 h-full w-64 bg-white shadow-xl z-50 lg:relative lg:translate-x-0 lg:z-auto"
+        className="fixed left-0 top-0 h-full w-64 bg-white shadow-xl z-50 lg:hidden"
       >
         <div className="flex flex-col h-full">
           {/* Header */}

@@ -37,7 +37,7 @@ const initialProducts: Product[] = [
     id: '1',
     name: 'Organic Tomatoes',
     description: 'Fresh, vine-ripened organic tomatoes grown using sustainable farming practices.',
-    price: 4.99,
+    price: 4999.00,
     image: 'https://images.pexels.com/photos/533280/pexels-photo-533280.jpeg?auto=compress&cs=tinysrgb&w=500',
     category: 'Vegetables',
     inStock: 50,
@@ -92,23 +92,19 @@ const initialProducts: Product[] = [
     featured: false,
     organic: true,
     seasonal: false
-  },
-  {
-    id: '6',
-    name: 'Leafy Greens Mix',
-    description: 'Fresh mix of spinach, kale, and arugula perfect for salads and smoothies.',
-    price: 3.99,
-    image: 'https://images.pexels.com/photos/1166227/pexels-photo-1166227.jpeg?auto=compress&cs=tinysrgb&w=500',
-    category: 'Vegetables',
-    inStock: 40,
-    featured: false,
-    organic: true,
-    seasonal: false
   }
 ];
 
 export const ProductProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [products, setProducts] = useState<Product[]>(initialProducts);
+  const [products, setProducts] = useState<Product[]>(() => {
+    const savedProducts = localStorage.getItem('farm-products');
+    return savedProducts ? JSON.parse(savedProducts) : initialProducts;
+  });
+
+  // Save products to localStorage whenever products change
+  useEffect(() => {
+    localStorage.setItem('farm-products', JSON.stringify(products));
+  }, [products]);
 
   const addProduct = (product: Omit<Product, 'id'>) => {
     const newProduct: Product = {

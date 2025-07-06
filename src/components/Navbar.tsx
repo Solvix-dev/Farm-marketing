@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Menu, X, Leaf, ShoppingCart } from 'lucide-react';
+import { Menu, X, Leaf, ShoppingCart, User } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -64,6 +64,21 @@ const Navbar: React.FC = () => {
               <button className={`p-2 rounded-full ${scrolled ? 'text-gray-700 hover:text-green-600' : 'text-white hover:text-yellow-300'}`}>
                 <ShoppingCart className="h-5 w-5" />
               </button>
+              <Link
+                to="/admin/login"
+                className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                  location.pathname === '/admin/login'
+                    ? scrolled
+                      ? 'text-green-600 bg-green-50'
+                      : 'text-yellow-300 bg-white/10'
+                    : scrolled
+                    ? 'text-gray-700 hover:text-green-600 hover:bg-green-50'
+                    : 'text-white hover:text-yellow-300 hover:bg-white/10'
+                }`}
+              >
+                <User className="h-4 w-4" />
+                Admin
+              </Link>
             </div>
           </div>
 
@@ -102,6 +117,18 @@ const Navbar: React.FC = () => {
                 {item.name}
               </Link>
             ))}
+            <Link
+              to="/admin/login"
+              className={`flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium ${
+                location.pathname === '/admin/login'
+                  ? 'text-green-600 bg-green-50'
+                  : 'text-gray-700 hover:text-green-600 hover:bg-green-50'
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <User className="h-4 w-4" />
+              Admin Login
+            </Link>
           </div>
         </motion.div>
       )}

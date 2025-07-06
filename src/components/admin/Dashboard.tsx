@@ -17,7 +17,7 @@ const Dashboard: React.FC = () => {
   const stats = [
     {
       label: 'Total Revenue',
-      value: '$12,345',
+      value: '₦1,234,500',
       change: '+12.5%',
       changeType: 'increase',
       icon: DollarSign,
@@ -149,10 +149,10 @@ const Dashboard: React.FC = () => {
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Orders</h3>
           <div className="space-y-4">
             {[
-              { id: '#001', customer: 'John Doe', amount: '$45.99', status: 'Delivered' },
-              { id: '#002', customer: 'Jane Smith', amount: '$32.50', status: 'Processing' },
-              { id: '#003', customer: 'Bob Johnson', amount: '$78.25', status: 'Shipped' },
-              { id: '#004', customer: 'Alice Brown', amount: '$22.75', status: 'Pending' },
+              { id: '#001', customer: 'John Doe', amount: '₦45,990', status: 'Delivered' },
+              { id: '#002', customer: 'Jane Smith', amount: '₦32,500', status: 'Processing' },
+              { id: '#003', customer: 'Bob Johnson', amount: '₦78,250', status: 'Shipped' },
+              { id: '#004', customer: 'Alice Brown', amount: '₦22,750', status: 'Pending' },
             ].map(order => (
               <div key={order.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                 <div>

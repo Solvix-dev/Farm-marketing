@@ -25,6 +25,8 @@ interface ProductFormData {
 const ProductForm: React.FC<ProductFormProps> = ({ product, onClose }) => {
   const { addProduct, updateProduct, categories } = useProducts();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string>(product?.image || '');
   
   const { register, handleSubmit, formState: { errors }, setValue, watch } = useForm<ProductFormData>({
     defaultValues: {
@@ -42,15 +44,41 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onClose }) => {
 
   const watchedImage = watch('image');
 
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setImageFile(file);
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const result = e.target?.result as string;
+        setImagePreview(result);
+        setValue('image', result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const onSubmit = async (data: ProductFormData) => {
     setIsSubmitting(true);
-    
+
     try {
+      // Ensure we have an image (either from preview or uploaded)
+      if (!imagePreview && !data.image) {
+        toast.error('Please upload an image for the product.');
+        setIsSubmitting(false);
+        return;
+      }
+
+      const productData = {
+        ...data,
+        image: imagePreview || data.image
+      };
+
       if (product) {
-        updateProduct(product.id, data);
+        updateProduct(product.id, productData);
         toast.success('Product updated successfully!');
       } else {
-        addProduct(data);
+        addProduct(productData);
         toast.success('Product added successfully!');
       }
       onClose();
@@ -90,20 +118,31 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onClose }) => {
                 Product Image
               </label>
               <div className="flex items-center space-x-4">
-                {watchedImage && (
+                {imagePreview && (
                   <img
-                    src={watchedImage}
+                    src={imagePreview}
                     alt="Product preview"
                     className="w-20 h-20 object-cover rounded-lg"
                   />
                 )}
                 <div className="flex-1">
-                  <input
-                    type="url"
-                    placeholder="Enter image URL"
-                    {...register('image', { required: 'Image URL is required' })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                  />
+                  <div className="flex items-center justify-center w-full">
+                    <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+                      <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                        <Upload className="w-8 h-8 mb-4 text-gray-500" />
+                        <p className="mb-2 text-sm text-gray-500">
+                          <span className="font-semibold">Click to upload</span> or drag and drop
+                        </p>
+                        <p className="text-xs text-gray-500">PNG, JPG or JPEG (MAX. 5MB)</p>
+                      </div>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageChange}
+                        className="hidden"
+                      />
+                    </label>
+                  </div>
                   {errors.image && (
                     <p className="text-red-600 text-sm mt-1">{errors.image.message}</p>
                   )}

@@ -15,8 +15,8 @@ const HomePage: React.FC = () => {
   const { products, featuredProducts } = useProducts();
 
   // Show featured products first, then fill with other products if needed
-  const displayProducts = featuredProducts.length >= 3 
-    ? featuredProducts.slice(0, 6) 
+  const displayProducts = featuredProducts.length >= 3
+    ? featuredProducts.slice(0, 6)
     : [...featuredProducts, ...products.filter(p => !p.featured)].slice(0, 6);
 
   return (
