@@ -92,6 +92,90 @@ const initialProducts: Product[] = [
     featured: false,
     organic: true,
     seasonal: false
+  },
+  {
+    id: '6',
+    name: 'Leafy Greens Mix',
+    description: 'Fresh mix of spinach, kale, and arugula perfect for salads and smoothies.',
+    price: 3.99,
+    image: 'https://images.pexels.com/photos/1166227/pexels-photo-1166227.jpeg?auto=compress&cs=tinysrgb&w=500',
+    category: 'Vegetables',
+    inStock: 40,
+    featured: false,
+    organic: true,
+    seasonal: false
+  },
+  {
+    id: '7',
+    name: 'Fresh Herbs Bundle',
+    description: 'Aromatic bundle of basil, parsley, cilantro, and mint.',
+    price: 2.50,
+    image: 'https://images.pexels.com/photos/4198015/pexels-photo-4198015.jpeg?auto=compress&cs=tinysrgb&w=500',
+    category: 'Herbs & Spices',
+    inStock: 35,
+    featured: false,
+    organic: true,
+    seasonal: false
+  },
+  {
+    id: '8',
+    name: 'Grass-Fed Beef',
+    description: 'Premium grass-fed beef cuts from pasture-raised cattle.',
+    price: 25.99,
+    image: 'https://images.pexels.com/photos/361184/asparagus-steak-veal-chop-veal-361184.jpeg?auto=compress&cs=tinysrgb&w=500',
+    category: 'Meat & Poultry',
+    inStock: 12,
+    featured: true,
+    organic: true,
+    seasonal: false
+  },
+  {
+    id: '9',
+    name: 'Organic Grains Mix',
+    description: 'Wholesome mix of quinoa, brown rice, and ancient grains.',
+    price: 8.75,
+    image: 'https://images.pexels.com/photos/1435904/pexels-photo-1435904.jpeg?auto=compress&cs=tinysrgb&w=500',
+    category: 'Grains & Cereals',
+    inStock: 28,
+    featured: false,
+    organic: true,
+    seasonal: false
+  },
+  {
+    id: '10',
+    name: 'Farm Fresh Milk',
+    description: 'Creamy whole milk from grass-fed cows, delivered fresh daily.',
+    price: 4.25,
+    image: 'https://images.pexels.com/photos/416978/pexels-photo-416978.jpeg?auto=compress&cs=tinysrgb&w=500',
+    category: 'Dairy & Eggs',
+    inStock: 45,
+    featured: false,
+    organic: true,
+    seasonal: false
+  },
+  {
+    id: '11',
+    name: 'Seasonal Preserves',
+    description: 'Homemade fruit preserves made from seasonal farm produce.',
+    price: 6.50,
+    image: 'https://images.pexels.com/photos/1435735/pexels-photo-1435735.jpeg?auto=compress&cs=tinysrgb&w=500',
+    category: 'Preserves & Jams',
+    inStock: 22,
+    featured: false,
+    organic: true,
+    seasonal: true
+  },
+  {
+    id: '12',
+    name: 'Organic Root Vegetables',
+    description: 'Fresh carrots, beets, turnips, and radishes from our organic fields.',
+    price: 5.75,
+    image: 'https://images.pexels.com/photos/143133/pexels-photo-143133.jpeg?auto=compress&cs=tinysrgb&w=500',
+    category: 'Vegetables',
+    inStock: 38,
+    featured: false,
+    organic: true,
+    seasonal: false
   }
 ];
 

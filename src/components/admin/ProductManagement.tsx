@@ -40,18 +40,18 @@ const ProductManagement: React.FC = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="flex justify-between items-center"
+        className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
       >
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Product Management</h1>
-          <p className="text-gray-600 mt-2">Manage your farm products inventory</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Product Management</h1>
+          <p className="text-sm sm:text-base text-gray-600 mt-1 sm:mt-2">Manage your farm products inventory</p>
         </div>
         <button
           onClick={() => setShowForm(true)}
-          className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold flex items-center gap-2 transition-colors"
+          className="bg-green-600 hover:bg-green-700 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold flex items-center gap-2 transition-colors text-sm sm:text-base w-full sm:w-auto justify-center"
         >
-          <Plus className="h-5 w-5" />
-          Add Product
+          <Plus className="h-4 w-4 sm:h-5 sm:w-5" />
+          <span className="sm:inline">Add Product</span>
         </button>
       </motion.div>
 
@@ -91,22 +91,22 @@ const ProductManagement: React.FC = () => {
           <table className="w-full">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-3 sm:px-6 py-3 sm:py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Product
                 </th>
-                <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="hidden sm:table-cell px-3 sm:px-6 py-3 sm:py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Category
                 </th>
-                <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-3 sm:px-6 py-3 sm:py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Price
                 </th>
-                <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="hidden md:table-cell px-3 sm:px-6 py-3 sm:py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Stock
                 </th>
-                <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="hidden lg:table-cell px-3 sm:px-6 py-3 sm:py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Status
                 </th>
-                <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-3 sm:px-6 py-3 sm:py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
@@ -120,58 +120,61 @@ const ProductManagement: React.FC = () => {
                   transition={{ duration: 0.4, delay: index * 0.05 }}
                   className="hover:bg-gray-50"
                 >
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-3 sm:px-6 py-3 sm:py-4">
                     <div className="flex items-center">
                       <img
                         src={product.image}
                         alt={product.name}
-                        className="w-12 h-12 rounded-lg object-cover mr-4"
+                        className="w-8 h-8 sm:w-12 sm:h-12 rounded-lg object-cover mr-2 sm:mr-4 flex-shrink-0"
                       />
-                      <div>
-                        <div className="text-sm font-medium text-gray-900">
+                      <div className="min-w-0 flex-1">
+                        <div className="text-xs sm:text-sm font-medium text-gray-900 truncate">
                           {product.name}
                         </div>
-                        <div className="text-sm text-gray-500 truncate max-w-xs">
-                          {product.description}
+                        <div className="text-xs text-gray-500 truncate sm:hidden">
+                          {product.category}
+                        </div>
+                        <div className="text-xs text-gray-500 truncate md:hidden">
+                          Stock: {product.inStock}
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                  <td className="hidden sm:table-cell px-3 sm:px-6 py-3 sm:py-4">
+                    <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
                       {product.category}
                     </span>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                  <td className="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-medium text-gray-900">
                     ₦{product.price.toLocaleString()}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                  <td className="hidden md:table-cell px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm text-gray-900">
                     {product.inStock}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                      product.inStock > 10 
-                        ? 'bg-green-100 text-green-800' 
-                        : product.inStock > 0 
+                  <td className="hidden lg:table-cell px-3 sm:px-6 py-3 sm:py-4">
+                    <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
+                      product.inStock > 10
+                        ? 'bg-green-100 text-green-800'
+                        : product.inStock > 0
                         ? 'bg-yellow-100 text-yellow-800'
                         : 'bg-red-100 text-red-800'
                     }`}>
                       {product.inStock > 10 ? 'In Stock' : product.inStock > 0 ? 'Low Stock' : 'Out of Stock'}
                     </span>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                    <div className="flex space-x-2">
+                  <td className="px-3 sm:px-6 py-3 sm:py-4 text-sm font-medium">
+                    <div className="flex space-x-1 sm:space-x-2">
                       <button
                         onClick={() => handleEdit(product)}
-                        className="text-blue-600 hover:text-blue-900 p-2 rounded-lg hover:bg-blue-50"
+                        className="text-blue-600 hover:text-blue-900 p-1 sm:p-2 rounded-lg hover:bg-blue-50"
                       >
-                        <Edit className="h-4 w-4" />
+                        <Edit className="h-3 w-3 sm:h-4 sm:w-4" />
                       </button>
                       <button
                         onClick={() => handleDelete(product.id)}
-                        className="text-red-600 hover:text-red-900 p-2 rounded-lg hover:bg-red-50"
+                        className="text-red-600 hover:text-red-900 p-1 sm:p-2 rounded-lg hover:bg-red-50"
                       >
-                        <Trash2 className="h-4 w-4" />
+                        <Trash2 className="h-3 w-3 sm:h-4 sm:w-4" />
                       </button>
                     </div>
                   </td>
