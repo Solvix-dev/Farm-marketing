@@ -1,6 +1,6 @@
-# GreenSickle Agro - Farm Marketing Website
+# GreenSickle Agro and Mine - Rice & Mining Materials Website
 
-A modern, high-performance marketing website and admin dashboard for a farm products company built with React, TypeScript, and Tailwind CSS.
+A modern, high-performance marketing website and admin dashboard for a rice and mining materials company built with React, TypeScript, and Tailwind CSS.
 
 ## 🌱 Features
 
@@ -110,13 +110,13 @@ src/
 
 ### For Customers
 
-- Browse fresh organic products
+- Browse premium rice and mining materials
 - View detailed product information
-- Contact the farm directly
+- Contact the company directly
 - Subscribe to newsletter updates
-- Mobile-friendly shopping experience
+- Mobile-friendly browsing experience
 
-### For Farm Owners
+### For Business Owners
 
 - Manage product inventory
 - Track sales analytics
@@ -138,4 +138,4 @@ For questions or support, please contact us through the website's contact form o
 adamumuhammad952@gmail.com
 ---
 
-Built with ❤️ for sustainable farming and fresh produce delivery.
+Built with ❤️ for premium rice trading and mining materials supply in Northern Nigeria.

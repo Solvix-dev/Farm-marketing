@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Send, User, Mail, MessageSquare, Phone, MapPin, Check } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { sendContactEmail, EmailData } from '../services/emailService';
 
 interface ContactFormData {
   name: string;
@@ -20,19 +21,31 @@ const ContactForm: React.FC = () => {
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
-    
-    // Simulate API call
+
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      console.log('Contact form submitted:', data);
-      toast.success('Message sent successfully! We\'ll get back to you soon.');
-      setIsSubmitted(true);
-      reset();
-      
-      // Reset success state after 5 seconds
-      setTimeout(() => setIsSubmitted(false), 5000);
+      // Send email using EmailJS
+      const emailData: EmailData = {
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        subject: data.subject,
+        message: data.message,
+      };
+
+      const success = await sendContactEmail(emailData);
+
+      if (success) {
+        toast.success('Message sent successfully! We\'ll get back to you soon.');
+        setIsSubmitted(true);
+        reset();
+
+        // Reset success state after 5 seconds
+        setTimeout(() => setIsSubmitted(false), 5000);
+      } else {
+        toast.error('Failed to send message. Please try again.');
+      }
     } catch (error) {
+      console.error('Contact form error:', error);
       toast.error('Failed to send message. Please try again.');
     } finally {
       setIsSubmitting(false);
@@ -53,9 +66,9 @@ const ContactForm: React.FC = () => {
           >
             <h2 className="text-4xl font-bold mb-6">Get in Touch</h2>
             <p className="text-xl text-green-100 mb-8 leading-relaxed">
-              Have questions about our products or want to place a custom order? 
-              We'd love to hear from you! Reach out and let's discuss how we can 
-              bring fresh, organic goodness to your table.
+              Have questions about our rice varieties or mining materials?
+              We'd love to hear from you! Reach out and let's discuss how we can
+              supply premium quality products for your needs.
             </p>
 
             <div className="space-y-6">
@@ -104,7 +117,7 @@ const ContactForm: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg">Email Us</h3>
-                  <p className="text-green-100">hello@greenharvest.com</p>
+                  <p className="text-green-100">hello@GreenSickle Agrovest.com</p>
                   <p className="text-green-200 text-sm">We respond within 24 hours</p>
                 </div>
               </motion.div>

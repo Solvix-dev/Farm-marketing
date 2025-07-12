@@ -10,10 +10,10 @@ const FarmStory: React.FC = () => {
   });
 
   const stats = [
-    { icon: Users, value: '500+', label: 'Happy Families Fed' },
-    { icon: Leaf, value: '100%', label: 'Organic Certified' },
+    { icon: Users, value: '500+', label: 'Satisfied Customers' },
+    { icon: Leaf, value: '100%', label: 'Quality Assured' },
     { icon: Award, value: '15+', label: 'Years of Excellence' },
-    { icon: Heart, value: '100%', label: 'Sustainably Grown' },
+    { icon: Heart, value: '100%', label: 'Locally Sourced' },
   ];
 
   return (
@@ -27,21 +27,21 @@ const FarmStory: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-              Our Farm-to-Table
-              <span className="block text-green-600">Story</span>
+              Our Rice & Mining
+              <span className="block text-green-600">Heritage</span>
             </h2>
             
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              For over 15 years, GreenHarvest has been dedicated to providing the freshest, 
-              most nutritious organic produce to our community. What started as a small family 
-              farm has grown into a trusted source of premium fruits and vegetables, 
-              all while maintaining our commitment to sustainable farming practices.
+              For over 15 years, GreenSickle Agro and Mine has been a trusted supplier of premium
+              rice grains and quality mining materials from Northern Nigeria. What started as a
+              small trading business has grown into a reliable source of high-grade rice varieties
+              and essential mining materials, serving customers across the region.
             </p>
-            
+
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              We believe in the power of fresh, organic food to nourish both body and soul. 
-              Every seed we plant, every crop we tend, and every harvest we gather is done 
-              with respect for the earth and love for our customers.
+              We believe in the power of quality products to build lasting relationships.
+              Every grain of rice we source, every mining material we supply, and every
+              transaction we complete is done with integrity and commitment to excellence.
             </p>
 
             <div className="grid grid-cols-2 gap-6">
@@ -70,8 +70,8 @@ const FarmStory: React.FC = () => {
           >
             <div className="relative overflow-hidden rounded-2xl shadow-2xl">
               <motion.img
-                src="https://images.pexels.com/photos/2132227/pexels-photo-2132227.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Farm landscape"
+                src="https://images.pexels.com/photos/723198/pexels-photo-723198.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Rice fields and mining operations"
                 className="w-full h-[600px] object-cover"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
@@ -85,11 +85,11 @@ const FarmStory: React.FC = () => {
                 className="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-sm rounded-xl p-6"
               >
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  Sustainable Farming Practices
+                  Quality Sourcing Standards
                 </h3>
                 <p className="text-gray-600">
-                  We use regenerative agriculture techniques that not only produce 
-                  the best crops but also improve soil health and biodiversity.
+                  We maintain strict quality control measures that ensure only the
+                  finest rice grains and premium mining materials reach our customers.
                 </p>
               </motion.div>
             </div>

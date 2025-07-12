@@ -60,7 +60,7 @@ const Dashboard: React.FC = () => {
         transition={{ duration: 0.6 }}
       >
         <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-        <p className="text-gray-600 mt-2">Welcome back! Here's what's happening with your farm today.</p>
+        <p className="text-gray-600 mt-2">Welcome back! Here's what's happening with your rice and mining business today.</p>
       </motion.div>
 
       {/* Stats Grid */}

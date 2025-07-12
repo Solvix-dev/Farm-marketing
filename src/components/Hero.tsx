@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
         <div
           className="w-full h-full bg-cover bg-center sm:bg-fixed"
           style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.pexels.com/photos/1300972/pexels-photo-1300972.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://ik.imagekit.io/solvix/Team%20Images/file_00000000e76062469a831d2edf9bbf82.png?updatedAt=1752318405616')`
           }}
         />
       </motion.div>
@@ -29,8 +29,8 @@ const Hero: React.FC = () => {
           className="mb-6 sm:mb-8"
         >
           <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight">
-            Farm Fresh
-            <span className="block text-yellow-300">Goodness</span>
+            Premium Rice &
+            <span className="block text-yellow-300">Mining Materials</span>
           </h1>
         </motion.div>
 
@@ -40,8 +40,8 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-lg sm:text-xl lg:text-2xl text-gray-200 mb-8 sm:mb-12 max-w-2xl mx-auto px-2"
         >
-          From our farm to your table, delivering the freshest organic produce
-          with a commitment to sustainability and quality.
+          From Northern Nigeria's finest fields and mines, delivering premium rice grains
+          and quality mining materials with a commitment to excellence and reliability.
         </motion.p>
 
         <motion.div
@@ -51,11 +51,11 @@ const Hero: React.FC = () => {
           className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-8 sm:mb-16"
         >
           <button className="bg-green-600 hover:bg-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 transform hover:scale-105 flex items-center gap-2 w-full sm:w-auto">
-            Shop Now
+            Browse Products
             <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
           </button>
           <button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 w-full sm:w-auto">
-            Learn More
+            Our Story
           </button>
         </motion.div>
 
@@ -69,18 +69,18 @@ const Hero: React.FC = () => {
           {[
             {
               icon: Leaf,
-              title: "100% Organic",
-              description: "Certified organic produce grown without harmful chemicals"
+              title: "Premium Quality",
+              description: "High-grade rice and carefully selected mining materials"
             },
             {
               icon: Shield,
-              title: "Farm Fresh",
-              description: "Harvested daily and delivered within 24 hours"
+              title: "Locally Sourced",
+              description: "Directly from Northern Nigeria's finest producers"
             },
             {
               icon: Heart,
-              title: "Sustainably Grown",
-              description: "Environmentally responsible farming practices"
+              title: "Trusted Supply",
+              description: "Reliable sourcing with consistent quality standards"
             }
           ].map((feature, index) => (
             <motion.div

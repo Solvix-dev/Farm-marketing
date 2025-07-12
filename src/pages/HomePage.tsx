@@ -38,7 +38,7 @@ const HomePage: React.FC = () => {
               Featured Products
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Discover our handpicked selection of the freshest, most delicious organic produce.
+              Discover our premium selection of rice grains and quality mining materials from Northern Nigeria.
             </p>
           </motion.div>
 
@@ -83,7 +83,7 @@ const HomePage: React.FC = () => {
             >
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">No Products Available</h3>
               <p className="text-gray-600 mb-8">
-                Products will appear here once they are added to the inventory.
+                Rice and mining materials will appear here once they are added to the inventory.
               </p>
               <Link
                 to="/admin/login"
@@ -106,7 +106,7 @@ const HomePage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <h3 className="text-xl font-bold mb-4">GreenHarvest</h3>
+              <h3 className="text-xl font-bold mb-4">GreenSickle Agro</h3>
               <p className="text-gray-400">
                 Fresh, organic produce delivered from our farm to your table.
               </p>
@@ -134,12 +134,12 @@ const HomePage: React.FC = () => {
               <div className="space-y-2 text-gray-400">
                 <p>123 Farm Road, Green Valley</p>
                 <p>Phone: (555) 123-4567</p>
-                <p>Email: hello@greenharvest.com</p>
+                <p>Email: hello@GreenSickle Agrovest.com</p>
               </div>
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 GreenHarvest. All rights reserved.</p>
+            <p>&copy; GreenSickle Agro. All rights reserved.</p>
           </div>
         </div>
       </footer>

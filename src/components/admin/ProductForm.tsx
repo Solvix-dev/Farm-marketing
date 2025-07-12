@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { X, Upload, Save } from 'lucide-react';
 import { useProducts, Product } from '../../contexts/ProductContext';
 import { useForm } from 'react-hook-form';
@@ -27,8 +27,10 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onClose }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string>(product?.image || '');
+  const [showCustomCategory, setShowCustomCategory] = useState(false);
+  const [customCategory, setCustomCategory] = useState('');
   
-  const { register, handleSubmit, formState: { errors }, setValue, watch } = useForm<ProductFormData>({
+  const { register, handleSubmit, formState: { errors }, setValue, watch, reset } = useForm<ProductFormData>({
     defaultValues: {
       name: product?.name || '',
       description: product?.description || '',
@@ -44,9 +46,30 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onClose }) => {
 
   const watchedImage = watch('image');
 
+  const handleClose = () => {
+    setImageFile(null);
+    setImagePreview('');
+    setShowCustomCategory(false);
+    setCustomCategory('');
+    reset();
+    onClose();
+  };
+
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
+      // Validate file size (5MB max)
+      if (file.size > 5 * 1024 * 1024) {
+        toast.error('Image size must be less than 5MB');
+        return;
+      }
+
+      // Validate file type
+      if (!file.type.startsWith('image/')) {
+        toast.error('Please select a valid image file');
+        return;
+      }
+
       setImageFile(file);
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -62,18 +85,36 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onClose }) => {
     setIsSubmitting(true);
 
     try {
-      // Ensure we have an image (either from preview or uploaded)
+      // Basic validation
       if (!imagePreview && !data.image) {
         toast.error('Please upload an image for the product.');
-        setIsSubmitting(false);
         return;
       }
 
-      const productData = {
-        ...data,
-        image: imagePreview || data.image
+      if (!data.name?.trim()) {
+        toast.error('Product name is required.');
+        return;
+      }
+
+      if (!data.category) {
+        toast.error('Please select a category.');
+        return;
+      }
+
+      // Prepare product data
+      const productData: Omit<Product, 'id'> = {
+        name: data.name.trim(),
+        description: data.description || '',
+        price: Number(data.price) || 0,
+        image: imagePreview || data.image,
+        category: data.category,
+        inStock: Number(data.inStock) || 0,
+        featured: Boolean(data.featured),
+        organic: Boolean(data.organic),
+        seasonal: Boolean(data.seasonal)
       };
 
+      // Submit the product
       if (product) {
         updateProduct(product.id, productData);
         toast.success('Product updated successfully!');
@@ -81,30 +122,31 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onClose }) => {
         addProduct(productData);
         toast.success('Product added successfully!');
       }
-      onClose();
+
+      // Close the form
+      handleClose();
     } catch (error) {
-      toast.error('An error occurred. Please try again.');
+      toast.error('Failed to save product. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <AnimatePresence>
-      <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 0.2 }}
-          className="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
-        >
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.95 }}
+        transition={{ duration: 0.2 }}
+        className="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+      >
           <div className="flex items-center justify-between p-6 border-b">
             <h2 className="text-2xl font-bold text-gray-900">
               {product ? 'Edit Product' : 'Add New Product'}
             </h2>
             <button
-              onClick={onClose}
+              onClick={handleClose}
               className="p-2 rounded-lg hover:bg-gray-100"
             >
               <X className="h-6 w-6" />
@@ -186,7 +228,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onClose }) => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Price ($)
+                  Price (₦)
                 </label>
                 <input
                   type="number"
@@ -230,15 +272,43 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onClose }) => {
                 Category
               </label>
               <select
-                {...register('category', { required: 'Category is required' })}
+                {...register('category', {
+                  required: 'Category is required',
+                  onChange: (e) => {
+                    if (e.target.value === 'new') {
+                      setShowCustomCategory(true);
+                      setValue('category', '');
+                    } else {
+                      setShowCustomCategory(false);
+                      setCustomCategory('');
+                    }
+                  }
+                })}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
               >
                 <option value="">Select a category</option>
                 {categories.map(category => (
                   <option key={category} value={category}>{category}</option>
                 ))}
-                <option value="new">Add New Category</option>
+                <option value="new">+ Add New Category</option>
               </select>
+
+              {showCustomCategory && (
+                <div className="mt-3">
+                  <input
+                    type="text"
+                    value={customCategory}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setCustomCategory(value);
+                      setValue('category', value, { shouldValidate: true });
+                    }}
+                    placeholder="Enter new category name"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  />
+                </div>
+              )}
+
               {errors.category && (
                 <p className="text-red-600 text-sm mt-1">{errors.category.message}</p>
               )}
@@ -282,7 +352,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onClose }) => {
             <div className="flex justify-end space-x-4 pt-6 border-t">
               <button
                 type="button"
-                onClick={onClose}
+                onClick={handleClose}
                 className="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 font-medium transition-colors"
               >
                 Cancel
@@ -301,9 +371,8 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onClose }) => {
               </button>
             </div>
           </form>
-        </motion.div>
-      </div>
-    </AnimatePresence>
+      </motion.div>
+    </div>
   );
 };
 

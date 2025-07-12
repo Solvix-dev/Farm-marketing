@@ -2,27 +2,44 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Check } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { sendNewsletterEmail, isValidEmail } from '../services/emailService';
 
 const Newsletter: React.FC = () => {
   const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Basic email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+
+    // Validate email
+    if (!isValidEmail(email)) {
       toast.error('Please enter a valid email address');
       return;
     }
 
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubscribed(true);
-      toast.success('Successfully subscribed to our newsletter!');
-      setEmail('');
-    }, 1000);
+    setIsSubmitting(true);
+
+    try {
+      // Send newsletter subscription email
+      const success = await sendNewsletterEmail({ email });
+
+      if (success) {
+        setIsSubscribed(true);
+        toast.success('Successfully subscribed to our newsletter!');
+        setEmail('');
+
+        // Reset subscription state after 5 seconds
+        setTimeout(() => setIsSubscribed(false), 5000);
+      } else {
+        toast.error('Failed to subscribe. Please try again.');
+      }
+    } catch (error) {
+      console.error('Newsletter subscription error:', error);
+      toast.error('Failed to subscribe. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -35,10 +52,10 @@ const Newsletter: React.FC = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Stay Fresh with Our Newsletter
+            Stay Updated with Our Newsletter
           </h2>
           <p className="text-xl text-green-100 mb-8">
-            Get the latest updates on seasonal produce, farming tips, and exclusive offers.
+            Get the latest updates on rice varieties, mining materials availability, and exclusive offers.
           </p>
         </motion.div>
 
@@ -63,11 +80,23 @@ const Newsletter: React.FC = () => {
           </div>
           <motion.button
             type="submit"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold px-8 py-3 rounded-lg transition-colors duration-300 flex items-center justify-center gap-2"
+            disabled={isSubmitting || isSubscribed}
+            whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
+            whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
+            className={`font-semibold px-8 py-3 rounded-lg transition-colors duration-300 flex items-center justify-center gap-2 ${
+              isSubscribed
+                ? 'bg-green-400 text-gray-900 cursor-default'
+                : isSubmitting
+                ? 'bg-gray-400 text-gray-700 cursor-not-allowed'
+                : 'bg-yellow-400 hover:bg-yellow-500 text-gray-900'
+            }`}
           >
-            {isSubscribed ? (
+            {isSubmitting ? (
+              <>
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-gray-700"></div>
+                Subscribing...
+              </>
+            ) : isSubscribed ? (
               <>
                 <Check className="h-5 w-5" />
                 Subscribed!

@@ -60,7 +60,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen, onClose }) => {
                 <Leaf className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h1 className="text-lg font-bold text-gray-900">GreenHarvest</h1>
+                <h1 className="text-lg font-bold text-gray-900">GreenSickle Agrovest</h1>
                 <p className="text-sm text-gray-600">Admin Panel</p>
               </div>
             </div>
@@ -133,7 +133,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen, onClose }) => {
                 <Leaf className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h1 className="text-lg font-bold text-gray-900">GreenHarvest</h1>
+                <h1 className="text-lg font-bold text-gray-900">GreenSickle Agrovest</h1>
                 <p className="text-sm text-gray-600">Admin Panel</p>
               </div>
             </div>

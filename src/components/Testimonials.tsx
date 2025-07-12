@@ -5,25 +5,25 @@ import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 const testimonials = [
   {
     id: 1,
-    name: "Sarah Johnson",
-    role: "Home Chef",
-    content: "The quality of produce from GreenHarvest is exceptional. My family has never tasted vegetables this fresh and flavorful. It's truly farm-to-table at its finest!",
+    name: "Amina Abdullahi",
+    role: "Restaurant Owner",
+    content: "The quality of rice from GreenSickle Agro and Mine is exceptional. Our customers always compliment the taste and texture. It's the best rice we've sourced in Northern Nigeria!",
     rating: 5,
     avatar: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150"
   },
   {
     id: 2,
-    name: "Michael Chen",
-    role: "Restaurant Owner",
-    content: "As a restaurant owner, I demand the best ingredients. GreenHarvest consistently delivers premium organic produce that elevates every dish we serve.",
+    name: "Ibrahim Musa",
+    role: "Construction Manager",
+    content: "As a construction manager, I need reliable suppliers for quality materials. GreenSickle consistently delivers premium mining materials that meet our project specifications.",
     rating: 5,
     avatar: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150"
   },
   {
     id: 3,
-    name: "Emily Rodriguez",
-    role: "Nutritionist",
-    content: "I recommend GreenHarvest to all my clients. Their commitment to organic, sustainable farming practices ensures maximum nutritional value in every bite.",
+    name: "Fatima Usman",
+    role: "Rice Distributor",
+    content: "I've been sourcing rice from GreenSickle for over 3 years. Their commitment to quality and timely delivery has made them my most trusted supplier in the region.",
     rating: 5,
     avatar: "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=150"
   }
@@ -64,7 +64,7 @@ const Testimonials: React.FC = () => {
             What Our Customers Say
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Don't just take our word for it. Here's what our satisfied customers have to say about our farm-fresh produce.
+            Don't just take our word for it. Here's what our satisfied customers have to say about our premium rice and mining materials.
           </p>
         </motion.div>
 

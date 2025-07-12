@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Leaf, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Send } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { sendContactEmail, EmailData } from '../services/emailService';
 
 interface ContactFormData {
   name: string;
@@ -17,14 +18,30 @@ export default function Footer() {
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    console.log('Contact form submitted:', data);
-    toast.success('Message sent successfully! We\'ll get back to you soon.');
-    reset();
-    setIsSubmitting(false);
+
+    try {
+      // Send email using EmailJS
+      const emailData: EmailData = {
+        name: data.name,
+        email: data.email,
+        subject: data.subject,
+        message: data.message,
+      };
+
+      const success = await sendContactEmail(emailData);
+
+      if (success) {
+        toast.success('Message sent successfully! We\'ll get back to you soon.');
+        reset();
+      } else {
+        toast.error('Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      console.error('Footer contact form error:', error);
+      toast.error('Failed to send message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -161,12 +178,12 @@ export default function Footer() {
             <div className="lg:col-span-2">
               <div className="flex items-center space-x-2 mb-6">
                 <Leaf className="h-8 w-8 text-green-500" />
-                <span className="text-2xl font-bold">GreenSickle Agro</span>
+                <span className="text-2xl font-bold">GreenSickle  Agro and Mine</span>
               </div>
               <p className="text-gray-300 mb-6 max-w-md">
-                Committed to providing the freshest, highest quality organic produce while supporting 
-                sustainable farming practices. From our farm to your table, we ensure every product 
-                meets our strict quality standards.
+                Committed to providing premium rice grains and quality mining materials from Northern Nigeria.
+                We ensure every product meets our strict quality standards and serves our customers' needs
+                with reliability and excellence.
               </p>
               <div className="flex space-x-4">
                 <a href="#" className="text-gray-400 hover:text-green-500 transition-colors">

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Plus, Edit, Trash2, Search, Upload } from 'lucide-react';
 import { useProducts, Product } from '../../contexts/ProductContext';
-import ProductForm from './ProductForm';
+import SimpleProductForm from './SimpleProductForm';
 import toast from 'react-hot-toast';
 
 const ProductManagement: React.FC = () => {
@@ -44,7 +44,7 @@ const ProductManagement: React.FC = () => {
       >
         <div>
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Product Management</h1>
-          <p className="text-sm sm:text-base text-gray-600 mt-1 sm:mt-2">Manage your farm products inventory</p>
+          <p className="text-sm sm:text-base text-gray-600 mt-1 sm:mt-2">Manage your rice and mining materials inventory</p>
         </div>
         <button
           onClick={() => setShowForm(true)}
@@ -187,7 +187,7 @@ const ProductManagement: React.FC = () => {
 
       {/* Product Form Modal */}
       {showForm && (
-        <ProductForm
+        <SimpleProductForm
           product={editingProduct}
           onClose={handleFormClose}
         />
