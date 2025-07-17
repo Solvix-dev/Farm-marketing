@@ -66,7 +66,7 @@ const ContactForm: React.FC = () => {
           >
             <h2 className="text-4xl font-bold mb-6">Get in Touch</h2>
             <p className="text-xl text-green-100 mb-8 leading-relaxed">
-              Have questions about our rice varieties or mining materials?
+              Have questions about our products or services?
               We'd love to hear from you! Reach out and let's discuss how we can
               supply premium quality products for your needs.
             </p>

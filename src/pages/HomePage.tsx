@@ -38,7 +38,7 @@ const HomePage: React.FC = () => {
               Featured Products
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Discover our premium selection of rice grains and quality mining materials from Northern Nigeria.
+              Explore our diverse range of high-quality agricultural products, sourced directly from the fertile lands of Northern Nigeria.
             </p>
           </motion.div>
 
@@ -83,7 +83,7 @@ const HomePage: React.FC = () => {
             >
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">No Products Available</h3>
               <p className="text-gray-600 mb-8">
-                Rice and mining materials will appear here once they are added to the inventory.
+                Our products will appear here once they are added to the inventory.
               </p>
               <Link
                 to="/admin/login"
@@ -123,10 +123,13 @@ const HomePage: React.FC = () => {
             <div>
               <h4 className="font-semibold mb-4">Categories</h4>
               <ul className="space-y-2 text-gray-400">
+                <li><a href="#" className="hover:text-white transition-colors">Cereals</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Legumes</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Livestock</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Poultry</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Forestry</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Vegetables</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Fruits</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Dairy & Eggs</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Pantry</a></li>
               </ul>
             </div>
             <div>

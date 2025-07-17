@@ -35,59 +35,59 @@ export const useProducts = () => {
 const initialProducts: Product[] = [
   {
     id: '1',
-    name: 'Premium Basmati Rice',
-    description: 'High-quality long-grain basmati rice from Northern Nigeria, perfect for special occasions.',
-    price: 4999.00,
-    image: 'https://images.pexels.com/photos/723198/pexels-photo-723198.jpeg?auto=compress&cs=tinysrgb&w=500',
-    category: 'Rice & Grains',
-    inStock: 50,
+    name: 'Maize',
+    description: 'High-quality maize from Northern Nigeria, perfect for various meals.',
+    price: 3500.00,
+    image: 'https://images.pexels.com/photos/255459/pexels-photo-255459.jpeg?auto=compress&cs=tinysrgb&w=500',
+    category: 'Cereals',
+    inStock: 100,
     featured: true,
     organic: true,
     seasonal: false
   },
   {
     id: '2',
-    name: 'Local Brown Rice',
-    description: 'Nutritious brown rice variety grown in the fertile lands of Northern Nigeria.',
-    price: 6.99,
-    image: 'https://images.pexels.com/photos/1393382/pexels-photo-1393382.jpeg?auto=compress&cs=tinysrgb&w=500',
-    category: 'Rice & Grains',
-    inStock: 30,
+    name: 'Soybeans',
+    description: 'Nutritious soybeans, a great source of protein.',
+    price: 4500.00,
+    image: 'https://images.pexels.com/photos/158648/soy-beans-soy-soy-protein-158648.jpeg?auto=compress&cs=tinysrgb&w=500',
+    category: 'Legumes',
+    inStock: 80,
     featured: true,
     organic: true,
     seasonal: false
   },
   {
     id: '3',
-    name: 'Premium Kuza (Clay)',
-    description: 'High-quality clay material sourced from Northern Nigeria, perfect for pottery and construction.',
-    price: 8.99,
-    image: 'https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg?auto=compress&cs=tinysrgb&w=500',
-    category: 'Mining Materials',
-    inStock: 25,
+    name: 'Live Cow',
+    description: 'Healthy and strong live cow, ideal for breeding or meat.',
+    price: 150000.00,
+    image: 'https://images.pexels.com/photos/162240/bull-calf-heifer-ko-162240.jpeg?auto=compress&cs=tinysrgb&w=500',
+    category: 'Livestock',
+    inStock: 10,
     featured: true,
     organic: false,
     seasonal: false
   },
   {
     id: '4',
-    name: 'White Rice (Parboiled)',
-    description: 'Premium parboiled white rice with excellent texture and nutritional value.',
-    price: 5.99,
-    image: 'https://images.pexels.com/photos/1393382/pexels-photo-1393382.jpeg?auto=compress&cs=tinysrgb&w=500',
-    category: 'Rice & Grains',
-    inStock: 20,
+    name: 'Fresh Eggs',
+    description: 'Farm-fresh eggs from healthy chickens.',
+    price: 1200.00,
+    image: 'https://images.pexels.com/photos/162712/egg-white-food-protein-162712.jpeg?auto=compress&cs=tinysrgb&w=500',
+    category: 'Poultry',
+    inStock: 200,
     featured: false,
     organic: true,
     seasonal: false
   },
   {
     id: '5',
-    name: 'Limestone Aggregate',
-    description: 'High-grade limestone aggregate perfect for construction and industrial applications.',
-    price: 12.99,
-    image: 'https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg?auto=compress&cs=tinysrgb&w=500',
-    category: 'Mining Materials',
+    name: 'Teak Wood',
+    description: 'High-quality teak wood for furniture and construction.',
+    price: 50000.00,
+    image: 'https://images.pexels.com/photos/139338/pexels-photo-139338.jpeg?auto=compress&cs=tinysrgb&w=500',
+    category: 'Forestry',
     inStock: 15,
     featured: false,
     organic: false,
@@ -95,87 +95,27 @@ const initialProducts: Product[] = [
   },
   {
     id: '6',
-    name: 'Jasmine Rice',
-    description: 'Aromatic jasmine rice with delicate fragrance and superior cooking quality.',
-    price: 3.99,
-    image: 'https://images.pexels.com/photos/723198/pexels-photo-723198.jpeg?auto=compress&cs=tinysrgb&w=500',
-    category: 'Rice & Grains',
-    inStock: 40,
+    name: 'Tomatoes',
+    description: 'Fresh and juicy tomatoes, grown organically.',
+    price: 800.00,
+    image: 'https://images.pexels.com/photos/533280/pexels-photo-533280.jpeg?auto=compress&cs=tinysrgb&w=500',
+    category: 'Vegetables',
+    inStock: 150,
     featured: false,
     organic: true,
-    seasonal: false
+    seasonal: true
   },
   {
     id: '7',
-    name: 'Millet Grains',
-    description: 'Nutritious millet grains, a traditional staple from Northern Nigeria.',
-    price: 2.50,
-    image: 'https://images.pexels.com/photos/1435904/pexels-photo-1435904.jpeg?auto=compress&cs=tinysrgb&w=500',
-    category: 'Rice & Grains',
-    inStock: 35,
-    featured: false,
-    organic: true,
-    seasonal: false
-  },
-  {
-    id: '8',
-    name: 'Granite Chips',
-    description: 'Premium granite chips for construction and decorative applications.',
-    price: 25.99,
-    image: 'https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg?auto=compress&cs=tinysrgb&w=500',
-    category: 'Mining Materials',
-    inStock: 12,
+    name: 'Mangoes',
+    description: 'Sweet and delicious mangoes, perfect for a healthy snack.',
+    price: 1500.00,
+    image: 'https://images.pexels.com/photos/2294471/pexels-photo-2294471.jpeg?auto=compress&cs=tinysrgb&w=500',
+    category: 'Fruits',
+    inStock: 120,
     featured: true,
-    organic: false,
-    seasonal: false
-  },
-  {
-    id: '9',
-    name: 'Sorghum Grains',
-    description: 'Premium sorghum grains, drought-resistant and highly nutritious.',
-    price: 8.75,
-    image: 'https://images.pexels.com/photos/1435904/pexels-photo-1435904.jpeg?auto=compress&cs=tinysrgb&w=500',
-    category: 'Rice & Grains',
-    inStock: 28,
-    featured: false,
     organic: true,
-    seasonal: false
-  },
-  {
-    id: '10',
-    name: 'Sand (Fine Grade)',
-    description: 'High-quality fine sand perfect for construction and masonry work.',
-    price: 4.25,
-    image: 'https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg?auto=compress&cs=tinysrgb&w=500',
-    category: 'Mining Materials',
-    inStock: 45,
-    featured: false,
-    organic: false,
-    seasonal: false
-  },
-  {
-    id: '11',
-    name: 'Fonio Grains',
-    description: 'Ancient super grain fonio, rich in nutrients and perfect for healthy meals.',
-    price: 6.50,
-    image: 'https://images.pexels.com/photos/1435904/pexels-photo-1435904.jpeg?auto=compress&cs=tinysrgb&w=500',
-    category: 'Rice & Grains',
-    inStock: 22,
-    featured: false,
-    organic: true,
-    seasonal: false
-  },
-  {
-    id: '12',
-    name: 'Laterite Soil',
-    description: 'Premium laterite soil ideal for construction and road building projects.',
-    price: 5.75,
-    image: 'https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg?auto=compress&cs=tinysrgb&w=500',
-    category: 'Mining Materials',
-    inStock: 38,
-    featured: false,
-    organic: false,
-    seasonal: false
+    seasonal: true
   }
 ];
 
@@ -209,7 +149,15 @@ export const ProductProvider: React.FC<{ children: React.ReactNode }> = ({ child
   };
 
   const featuredProducts = products.filter(product => product.featured);
-  const categories = [...new Set(products.map(product => product.category))];
+  const categories = [
+    'Cereals',
+    'Legumes',
+    'Livestock',
+    'Poultry',
+    'Forestry',
+    'Vegetables',
+    'Fruits'
+  ];
 
   return (
     <ProductContext.Provider value={{

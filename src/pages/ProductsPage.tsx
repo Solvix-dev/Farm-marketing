@@ -6,7 +6,17 @@ import ProductCard from '../components/ProductCard';
 import { useProducts } from '../contexts/ProductContext';
 
 const ProductsPage: React.FC = () => {
-  const { products, categories } = useProducts();
+  const { products } = useProducts();
+
+  // Fixed product categories as per user request
+  const fixedCategories = [
+    'cereals',
+    'legumes',
+    'liveshock',
+    'poultry Product',
+    'Forestry Product',
+    'vegetables',
+  ];
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [sortBy, setSortBy] = useState('name');
@@ -99,7 +109,7 @@ const ProductsPage: React.FC = () => {
               className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
             >
               <option value="All">All Categories</option>
-              {categories.map(category => (
+              {fixedCategories.map(category => (
                 <option key={category} value={category}>{category}</option>
               ))}
             </select>

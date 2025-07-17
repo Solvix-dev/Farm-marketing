@@ -55,7 +55,7 @@ const Newsletter: React.FC = () => {
             Stay Updated with Our Newsletter
           </h2>
           <p className="text-xl text-green-100 mb-8">
-            Get the latest updates on rice varieties, mining materials availability, and exclusive offers.
+            Get the latest updates on our products, availability, and exclusive offers.
           </p>
         </motion.div>
 

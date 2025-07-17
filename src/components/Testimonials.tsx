@@ -7,7 +7,7 @@ const testimonials = [
     id: 1,
     name: "Amina Abdullahi",
     role: "Restaurant Owner",
-    content: "The quality of rice from GreenSickle Agro and Mine is exceptional. Our customers always compliment the taste and texture. It's the best rice we've sourced in Northern Nigeria!",
+    content: "The quality of produce from GreenSickle Agro is exceptional. Our customers always compliment the freshness and taste. It's the best we've sourced in Northern Nigeria!",
     rating: 5,
     avatar: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150"
   },
@@ -15,7 +15,7 @@ const testimonials = [
     id: 2,
     name: "Ibrahim Musa",
     role: "Construction Manager",
-    content: "As a construction manager, I need reliable suppliers for quality materials. GreenSickle consistently delivers premium mining materials that meet our project specifications.",
+    content: "As a restaurant owner, I need reliable suppliers for fresh ingredients. GreenSickle consistently delivers high-quality produce that meets our standards.",
     rating: 5,
     avatar: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150"
   },
@@ -23,7 +23,7 @@ const testimonials = [
     id: 3,
     name: "Fatima Usman",
     role: "Rice Distributor",
-    content: "I've been sourcing rice from GreenSickle for over 3 years. Their commitment to quality and timely delivery has made them my most trusted supplier in the region.",
+    content: "I've been sourcing produce from GreenSickle for over 3 years. Their commitment to quality and timely delivery has made them my most trusted supplier in the region.",
     rating: 5,
     avatar: "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=150"
   }
@@ -64,7 +64,7 @@ const Testimonials: React.FC = () => {
             What Our Customers Say
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Don't just take our word for it. Here's what our satisfied customers have to say about our premium rice and mining materials.
+            Don't just take our word for it. Here's what our satisfied customers have to say about our high-quality farm products.
           </p>
         </motion.div>
 

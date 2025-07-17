@@ -27,20 +27,19 @@ const FarmStory: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-              Our Rice & Mining
+              Our Agricultural
               <span className="block text-green-600">Heritage</span>
             </h2>
             
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
               For over 15 years, GreenSickle Agro and Mine has been a trusted supplier of premium
-              rice grains and quality mining materials from Northern Nigeria. What started as a
-              small trading business has grown into a reliable source of high-grade rice varieties
-              and essential mining materials, serving customers across the region.
+              a wide range of agricultural products from Northern Nigeria. What started as a
+              small family farm has grown into a reliable source of high-quality produce, serving customers across the region.
             </p>
 
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
               We believe in the power of quality products to build lasting relationships.
-              Every grain of rice we source, every mining material we supply, and every
+              Every product we cultivate, every harvest we gather, and every
               transaction we complete is done with integrity and commitment to excellence.
             </p>
 
@@ -71,7 +70,7 @@ const FarmStory: React.FC = () => {
             <div className="relative overflow-hidden rounded-2xl shadow-2xl">
               <motion.img
                 src="https://images.pexels.com/photos/723198/pexels-photo-723198.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Rice fields and mining operations"
+                alt="Lush green farm fields"
                 className="w-full h-[600px] object-cover"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
@@ -89,7 +88,7 @@ const FarmStory: React.FC = () => {
                 </h3>
                 <p className="text-gray-600">
                   We maintain strict quality control measures that ensure only the
-                  finest rice grains and premium mining materials reach our customers.
+                  finest agricultural products reach our customers.
                 </p>
               </motion.div>
             </div>

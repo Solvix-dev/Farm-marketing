@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Leaf, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Send } from 'lucide-react';
 import { useForm } from 'react-hook-form';
@@ -181,7 +181,7 @@ export default function Footer() {
                 <span className="text-2xl font-bold">GreenSickle  Agro and Mine</span>
               </div>
               <p className="text-gray-300 mb-6 max-w-md">
-                Committed to providing premium rice grains and quality mining materials from Northern Nigeria.
+                Committed to providing high-quality agricultural products from Northern Nigeria.
                 We ensure every product meets our strict quality standards and serves our customers' needs
                 with reliability and excellence.
               </p>

@@ -29,8 +29,8 @@ const Hero: React.FC = () => {
           className="mb-6 sm:mb-8"
         >
           <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight">
-            Premium Rice &
-            <span className="block text-yellow-300">Mining Materials</span>
+            Fresh & Quality
+            <span className="block text-yellow-300">Farm Products</span>
           </h1>
         </motion.div>
 
@@ -40,8 +40,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-lg sm:text-xl lg:text-2xl text-gray-200 mb-8 sm:mb-12 max-w-2xl mx-auto px-2"
         >
-          From Northern Nigeria's finest fields and mines, delivering premium rice grains
-          and quality mining materials with a commitment to excellence and reliability.
+          From Northern Nigeria's fertile lands, we bring you a diverse range of fresh and high-quality agricultural products, cultivated with a commitment to excellence and sustainability.
         </motion.p>
 
         <motion.div
@@ -70,7 +69,7 @@ const Hero: React.FC = () => {
             {
               icon: Leaf,
               title: "Premium Quality",
-              description: "High-grade rice and carefully selected mining materials"
+              description: "The finest agricultural products, cultivated and harvested to meet the highest standards"
             },
             {
               icon: Shield,
